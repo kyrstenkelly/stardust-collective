@@ -53,9 +53,6 @@ export function normalizeProduct(productNode: any): Product {
         ? productOptions?.edges.map(normalizeProductOption)
         : [],
     },
-    brand: {
-      $apply: (brand: any) => (brand?.entityId ? brand?.entityId : null),
-    },
     slug: {
       $set: path?.replace(/^\/+|\/+$/g, ''),
     },

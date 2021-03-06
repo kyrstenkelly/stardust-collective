@@ -14,13 +14,6 @@ interface LOCALE_DATA {
 }
 
 const LOCALES_MAP: Record<string, LOCALE_DATA> = {
-  es: {
-    name: 'Español',
-    img: {
-      filename: 'flag-es-co.svg',
-      alt: 'Bandera Colombiana',
-    },
-  },
   'en-US': {
     name: 'English',
     img: {

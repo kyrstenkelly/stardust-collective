@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import type { Page } from '@framework/common/get-all-pages'
 import getSlug from '@lib/get-slug'
-import { Github, Vercel } from '@components/icons'
+import { Github } from '@components/icons'
 import { Logo, Container } from '@components/ui'
 import { I18nWidget } from '@components/common'
 import s from './Footer.module.css'
@@ -31,7 +31,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 <span className="rounded-full border border-gray-700 mr-2">
                   <Logo />
                 </span>
-                <span>ACME</span>
+                <span>Stardust Collective</span>
               </a>
             </Link>
           </div>
@@ -41,20 +41,6 @@ const Footer: FC<Props> = ({ className, pages }) => {
                 <Link href="/">
                   <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
                     Home
-                  </a>
-                </Link>
-              </li>
-              <li className="py-3 md:py-0 md:pb-4">
-                <Link href="/">
-                  <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
-                    Careers
-                  </a>
-                </Link>
-              </li>
-              <li className="py-3 md:py-0 md:pb-4">
-                <Link href="/blog">
-                  <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
-                    Blog
                   </a>
                 </Link>
               </li>
@@ -82,37 +68,10 @@ const Footer: FC<Props> = ({ className, pages }) => {
               ))}
             </ul>
           </div>
-          <div className="col-span-1 lg:col-span-6 flex items-start lg:justify-end text-primary">
-            <div className="flex space-x-6 items-center h-10">
-              <a
-                aria-label="Github Repository"
-                href="https://github.com/vercel/commerce"
-                className={s.link}
-              >
-                <Github />
-              </a>
-              <I18nWidget />
-            </div>
-          </div>
         </div>
         <div className="py-12 flex flex-col md:flex-row justify-between items-center space-y-4">
           <div>
-            <span>&copy; 2020 ACME, Inc. All rights reserved.</span>
-          </div>
-          <div className="flex items-center text-primary">
-            <span className="text-primary">Crafted by</span>
-            <a
-              rel="noopener"
-              href="https://vercel.com"
-              aria-label="Vercel.com Link"
-              target="_blank"
-              className="text-primary"
-            >
-              <Vercel
-                className="inline-block h-6 ml-4 text-primary"
-                alt="Vercel.com Logo"
-              />
-            </a>
+            <span>&copy; 2020 Stardust Collective. All rights reserved.</span>
           </div>
         </div>
       </Container>

@@ -320,17 +320,16 @@ const WishlistButton = ({ productId, variant }) => {
 
 ### useSearch
 
-`useSearch` handles searching the bigcommerce storefront product catalog by catalog, brand, and query string.
+`useSearch` handles searching the bigcommerce storefront product catalog by category or query string.
 
 ```jsx
 ...
 import useSearch from '@bigcommerce/storefront-data-hooks/products/use-search'
 
-const SearchPage = ({ searchString, category, brand, sortStr }) => {
+const SearchPage = ({ searchString, category, sortStr }) => {
   const { data } = useSearch({
     search: searchString || '',
     categoryId: category?.entityId,
-    brandId: brand?.entityId,
     sort: sortStr || '',
   })
 

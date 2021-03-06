@@ -7,7 +7,7 @@ const isShopify = commerce.provider === 'shopify'
 module.exports = withCommerceConfig({
   commerce,
   i18n: {
-    locales: ['en-US', 'es'],
+    locales: ['en-US'],
     defaultLocale: 'en-US',
   },
   rewrites() {
@@ -24,15 +24,6 @@ module.exports = withCommerceConfig({
       },
       // Rewrites for /search
       {
-        source: '/search/designers/:name',
-        destination: '/search',
-      },
-      {
-        source: '/search/designers/:name/:category',
-        destination: '/search',
-      },
-      {
-        // This rewrite will also handle `/search/designers`
         source: '/search/:category',
         destination: '/search',
       },

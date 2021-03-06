@@ -13,7 +13,7 @@ const LIMIT = 12
 // Return current cart info
 const getProducts: ProductsHandlers['getProducts'] = async ({
   res,
-  body: { search, category, brand, sort },
+  body: { search, category, sort },
   config,
 }) => {
   // Use a dummy base as we only care about the relative path
@@ -26,9 +26,6 @@ const getProducts: ProductsHandlers['getProducts'] = async ({
 
   if (category && Number.isInteger(Number(category)))
     url.searchParams.set('categories:in', category)
-
-  if (brand && Number.isInteger(Number(brand)))
-    url.searchParams.set('brand_id', brand)
 
   if (sort) {
     const [_sort, direction] = sort.split('-')
