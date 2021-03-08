@@ -24,18 +24,8 @@ const Footer: FC<Props> = ({ className, pages }) => {
   return (
     <footer className={rootClassName}>
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-b border-accents-2 py-12 text-primary bg-primary transition-colors duration-150">
-          <div className="col-span-1 lg:col-span-2">
-            <Link href="/">
-              <a className="flex flex-initial items-center font-bold md:mr-24">
-                <span className="rounded-full border border-gray-700 mr-2">
-                  <Logo />
-                </span>
-                <span>Stardust Collective</span>
-              </a>
-            </Link>
-          </div>
-          <div className="col-span-1 lg:col-span-2">
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 border-b border-accents-2 py-12 text-primary bg-primary transition-colors duration-150">
+          <div className="col-span-1 lg:col-span-3">
             <ul className="flex flex-initial flex-col md:flex-1">
               <li className="py-3 md:py-0 md:pb-4">
                 <Link href="/">
@@ -55,7 +45,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
               ))}
             </ul>
           </div>
-          <div className="col-span-1 lg:col-span-2">
+          <div className="col-span-1 lg:col-span-3">
             <ul className="flex flex-initial flex-col md:flex-1">
               {legalPages.map((page) => (
                 <li key={page.url} className="py-3 md:py-0 md:pb-4">

@@ -5,26 +5,15 @@ import s from './Grid.module.css'
 interface Props {
   className?: string
   children?: ReactNode[] | Component[] | any[]
-  layout?: 'A' | 'B' | 'C' | 'D' | 'normal'
-  variant?: 'default' | 'filled'
+  layout?: 'normal' | 'home'
 }
 
-const Grid: FC<Props> = ({
-  className,
-  layout = 'A',
-  children,
-  variant = 'default',
-}) => {
+const Grid: FC<Props> = ({ className, layout = 'normal', children }) => {
   const rootClassName = cn(
     s.root,
     {
-      [s.layoutA]: layout === 'A',
-      [s.layoutB]: layout === 'B',
-      [s.layoutC]: layout === 'C',
-      [s.layoutD]: layout === 'D',
       [s.layoutNormal]: layout === 'normal',
-      [s.default]: variant === 'default',
-      [s.filled]: variant === 'filled',
+      [s.layoutHome]: layout === 'home',
     },
     className
   )

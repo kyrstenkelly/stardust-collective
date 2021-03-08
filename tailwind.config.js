@@ -37,8 +37,6 @@ module.exports = {
         'accents-7': 'var(--accents-7)',
         'accents-8': 'var(--accents-8)',
         'accents-9': 'var(--accents-9)',
-        violet: 'var(--violet)',
-        'violet-light': 'var(--violet-light)',
         pink: 'var(--pink)',
         cyan: 'var(--cyan)',
         blue: 'var(--blue)',
@@ -60,6 +58,10 @@ module.exports = {
       },
       scale: {
         120: '1.2',
+      },
+      fontFamily: {
+        cursive: 'var(--font-cursive)',
+        sans: 'var(--font-sans)',
       },
     },
   },

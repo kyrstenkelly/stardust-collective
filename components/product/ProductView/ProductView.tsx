@@ -31,7 +31,6 @@ const ProductView: FC<Props> = ({ product }) => {
   const [loading, setLoading] = useState(false)
   const [choices, setChoices] = useState<SelectedOptions>({
     size: null,
-    color: null,
   })
 
   // Select the correct variant based on choices
@@ -72,15 +71,6 @@ const ProductView: FC<Props> = ({ product }) => {
       />
       <div className={cn(s.root, 'fit')}>
         <div className={cn(s.productDisplay, 'fit')}>
-          <div className={s.nameBox}>
-            <h1 className={s.name}>{product.name}</h1>
-            <div className={s.price}>
-              {price}
-              {` `}
-              {product.price?.currencyCode}
-            </div>
-          </div>
-
           <div className={s.sliderContainer}>
             <ProductSlider key={product.id}>
               {product.images.map((image, i) => (
@@ -101,6 +91,10 @@ const ProductView: FC<Props> = ({ product }) => {
         </div>
         <div className={s.sidebar}>
           <section>
+            <div className={s.nameBox}>
+              <h1 className={s.name}>{product.name}</h1>
+              <div className={s.price}>{price}</div>
+            </div>
             {product.options?.map((opt) => (
               <div className="pb-4" key={opt.displayName}>
                 <h2 className="uppercase font-medium">{opt.displayName}</h2>

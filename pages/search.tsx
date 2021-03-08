@@ -230,7 +230,6 @@ export default function Search({
             <Grid layout="normal">
               {data.products.map((product: Product) => (
                 <ProductCard
-                  variant="simple"
                   key={product.path}
                   className="animated fadeIn"
                   product={product}
