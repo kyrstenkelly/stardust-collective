@@ -1,9 +1,16 @@
 .root {
-  @apply flex flex-wrap justify-center p-16;
+  @apply grid justify-center;
+  grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
 
   & > * {
-    @apply pb-16 mx-8;
-    min-height: 325px;
-    min-width: 325px;
+    @apply mx-4 pb-16 lg:mx-8;
   }
+}
+
+.layoutHome {
+  @apply p-4 lg:p-16;
+}
+
+.layoutNormal {
+  @apply p-0;
 }

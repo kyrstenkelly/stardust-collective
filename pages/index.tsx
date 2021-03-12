@@ -1,7 +1,6 @@
 import { Layout } from '@components/common'
 import { Grid, Marquee, Hero } from '@components/ui'
 import { ProductCard } from '@components/product'
-// import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 import { getConfig } from '@framework/api'
@@ -41,7 +40,7 @@ export default function Home({
   return (
     <>
       <Grid layout="home">
-        {products.slice(0, 3).map((product, i) => (
+        {products.map((product, i) => (
           <ProductCard
             key={product.id}
             product={product}

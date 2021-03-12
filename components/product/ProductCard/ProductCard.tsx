@@ -52,36 +52,6 @@ const ProductCard: FC<Props> = ({ className, product, imgProps, ...props }) => {
             )}
           </div>
         </>
-        {/* <>
-          <div className={s.squareBg} />
-          <div className="flex flex-row justify-between box-border w-full z-20 absolute">
-            <div className="absolute top-0 left-0 pr-16 max-w-full">
-              <h3 className={s.productTitle}>
-                <span>{product.name}</span>
-              </h3>
-              <span className={s.productPrice}>
-                {product.price.value}
-                &nbsp;
-                {product.price.currencyCode}
-              </span>
-            </div>
-
-          </div>
-          <div className={s.imageContainer}>
-            {product?.images && (
-              <Image
-                alt={product.name || 'Product Image'}
-                className={s.productImage}
-                src={product.images[0].url || placeholderImg}
-                height={540}
-                width={540}
-                quality="85"
-                layout="responsive"
-                {...imgProps}
-              />
-            )}
-          </div>
-        </> */}
       </a>
     </Link>
   )

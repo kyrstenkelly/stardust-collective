@@ -19,10 +19,10 @@ const Navbar: FC = () => (
             <Link href="/search">
               <a className={s.link}>All</a>
             </Link>
-            <Link href="/search?q=print">
+            <Link href="/search/prints">
               <a className={s.link}>Prints</a>
             </Link>
-            <Link href="/search?q=painting">
+            <Link href="/search/paintings">
               <a className={s.link}>Paintings</a>
             </Link>
           </nav>

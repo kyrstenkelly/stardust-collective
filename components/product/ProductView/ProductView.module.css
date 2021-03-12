@@ -61,7 +61,7 @@
 }
 
 .img {
-  @apply w-full h-auto max-h-full object-cover;
+  @apply w-full object-contain;
 }
 
 .button {

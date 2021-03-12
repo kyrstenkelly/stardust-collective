@@ -1,6 +1,6 @@
 :root {
   --primary: #ffffff;
-  --primary-2: #f1f3f5;
+  --primary-2: #ebe9e0; /** yellowish white - F3EED8 */
   --secondary: #CB4E47;
   --secondary-2: #111;
   --selection: var(--cyan);
@@ -75,7 +75,7 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--primary);
+  background-color: var(--primary-2);
   color: var(--text-primary);
 }
 

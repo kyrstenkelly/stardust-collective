@@ -80,7 +80,7 @@ const ProductView: FC<Props> = ({ product }) => {
                     src={image.url!}
                     alt={image.alt || 'Product Image'}
                     width={1050}
-                    height={1050}
+                    height={500}
                     priority={i === 0}
                     quality="85"
                   />

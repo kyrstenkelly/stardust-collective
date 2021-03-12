@@ -245,8 +245,8 @@ export default function Search({
               {rangeMap(12, (i) => (
                 <Skeleton
                   key={i}
-                  className="w-full animated fadeIn"
-                  height={325}
+                  className="h-full animated fadeIn"
+                  width={325}
                 />
               ))}
             </Grid>
