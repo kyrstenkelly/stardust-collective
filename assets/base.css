@@ -1,7 +1,7 @@
 :root {
   --primary: #ffffff;
   --primary-2: #ebe9e0; /** yellowish white - F3EED8 */
-  --secondary: #CB4E47;
+  --secondary: #ad553a;
   --secondary-2: #111;
   --selection: var(--cyan);
 
@@ -12,7 +12,6 @@
   --hover: rgba(0, 0, 0, 0.075);
   --hover-1: rgba(0, 0, 0, 0.15);
   --hover-2: rgba(0, 0, 0, 0.25);
-  --red: #CB4E47;
   --accents-0: #f8f9fa;
   --accents-1: #f1f3f5;
   --accents-2: #e9ecef;
@@ -25,6 +24,14 @@
   --accents-9: #212529;
   --font-sans: -apple-system, system-ui, BlinkMacSystemFont, 'Roboto', sans-serif;
   --font-cursive: 'Grand Hotel', cursive;
+
+  /** Stardust Collective Custom Colors */
+  --turquoise: #6db0a6;
+  --turquoise-dark: #436e68;
+  --coral: #ec9e85;
+  --coral-dark: #ad553a;
+  --gold: #fae68f;
+  --gold-dark: #ddbd3d;
 }
 
 [data-theme='dark'] {

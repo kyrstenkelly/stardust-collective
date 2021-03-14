@@ -1,0 +1,7 @@
+.root {
+  @apply inline-block h-8 w-8 rounded-full border-2 border-primary transition duration-150;
+}
+
+.root:hover {
+  @apply opacity-80;
+}

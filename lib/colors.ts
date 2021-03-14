@@ -1,18 +1,9 @@
 import random from 'lodash.random'
 
-export function getRandomPairOfColors() {
-  const colors = ['#37B679', '#DA3C3C', '#3291FF', '#7928CA', '#79FFE1']
+export function getRandomColor() {
+  const colors = [colorMap.scTurquoise, colorMap.scCoral, colorMap.scGold]
   const getRandomIdx = () => random(0, colors.length - 1)
-  let idx = getRandomIdx()
-  let idx2 = getRandomIdx()
-
-  // Has to be a different color
-  while (idx2 === idx) {
-    idx2 = getRandomIdx()
-  }
-
-  // Returns a pair of colors
-  return [colors[idx], colors[idx2]]
+  return colors[getRandomIdx()]
 }
 
 function hexToRgb(hex: string = '') {
@@ -190,6 +181,12 @@ const colorMap: Record<string, string> = {
   whitesmoke: '#F5F5F5',
   yellow: '#FFFF00',
   yellowgreen: '#9ACD32',
+  scTurquoise: '#6db0a6',
+  scTurquoseDark: '#436e68',
+  scCoral: '#ec9e85',
+  scCoralDark: '#ad553a',
+  scGold: '#fae68f',
+  scGoldDark: '#ddbd3d',
 }
 
 export function isDark(color: string = ''): boolean {
