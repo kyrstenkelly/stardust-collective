@@ -1,5 +1,7 @@
 .root {
-  @apply bg-secondary text-accents-1 cursor-pointer inline-flex px-10 rounded-sm leading-6  transition ease-in-out duration-150 shadow-sm font-semibold text-center justify-center uppercase py-4 items-center;
+  @apply bg-secondary text-accents-1 cursor-pointer inline-flex rounded-sm leading-6 transition
+    ease-in-out duration-150 shadow-sm font-semibold text-center justify-center uppercase items-center
+    px-4 py-2 lg:px-10 lg:py-4;
 }
 
 .root:hover {
