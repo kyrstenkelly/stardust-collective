@@ -61,7 +61,7 @@ const LoginView: FC<Props> = () => {
       className="w-80 flex flex-col justify-between p-3"
     >
       <div className="flex justify-center pb-12 ">
-        <Logo />
+        <Logo className="h-full" />
       </div>
       <div className="flex flex-col space-y-3">
         {message && (
