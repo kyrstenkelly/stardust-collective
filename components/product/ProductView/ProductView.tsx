@@ -11,7 +11,7 @@ import type { Product } from '@commerce/types'
 import usePrice from '@framework/product/use-price'
 import { useAddItem } from '@framework/cart'
 
-import { getVariant, SelectedOptions } from '../helpers'
+import { getVariant, getDefaultOption, SelectedOptions } from '../helpers'
 import WishlistButton from '@components/wishlist/WishlistButton'
 
 interface Props {
@@ -25,7 +25,7 @@ const ProductView: FC<Props> = ({ product }) => {
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
   const [choices, setChoices] = useState<SelectedOptions>({
-    size: null,
+    size: getDefaultOption(product.options, 'size'),
   })
 
   // Select the correct variant based on choices
