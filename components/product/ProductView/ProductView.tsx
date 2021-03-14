@@ -22,11 +22,6 @@ interface Props {
 
 const ProductView: FC<Props> = ({ product }) => {
   const addItem = useAddItem()
-  const { price } = usePrice({
-    amount: product.price.value,
-    baseAmount: product.price.retailPrice,
-    currencyCode: product.price.currencyCode!,
-  })
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
   const [choices, setChoices] = useState<SelectedOptions>({
@@ -35,6 +30,12 @@ const ProductView: FC<Props> = ({ product }) => {
 
   // Select the correct variant based on choices
   const variant = getVariant(product, choices)
+  const { price } = usePrice({
+    amount: variant?.prices.price.value || product.price.value,
+    baseAmount: product.price.retailPrice,
+    currencyCode:
+      variant?.prices.price.currencyCode || product.price.currencyCode!,
+  })
 
   const addToCart = async () => {
     setLoading(true)

@@ -190,9 +190,12 @@ interface ProductImage {
 interface ProductVariant2 {
   id: string | number
   options: ProductOption[]
+  prices: {
+    price: ProductPrice
+  }
 }
 
-interface ProductPrice {
+export interface ProductPrice {
   value: number
   currencyCode: 'USD' | 'ARS' | string | undefined
   retailPrice?: number
