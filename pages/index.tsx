@@ -35,11 +35,11 @@ export async function getStaticProps({
 
 export default function Home({
   products,
-  categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Grid layout="home">
+      <Hero headline="stardust collective" />
+      <Grid layout="home" className="mt-6">
         {products.map((product, i) => (
           <ProductCard
             key={product.id}
