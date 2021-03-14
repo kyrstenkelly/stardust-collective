@@ -61,16 +61,20 @@ const ProductSlider: FC = ({ children }) => {
 
   return (
     <div className={s.root} ref={sliderContainerRef}>
-      <button
-        className={cn(s.leftControl, s.control)}
-        onClick={slider?.prev}
-        aria-label="Previous Product Image"
-      />
-      <button
-        className={cn(s.rightControl, s.control)}
-        onClick={slider?.next}
-        aria-label="Next Product Image"
-      />
+      {Children.count(children) > 1 ? (
+        <>
+          <button
+            className={cn(s.leftControl, s.control)}
+            onClick={slider?.prev}
+            aria-label="Previous Product Image"
+          />
+          <button
+            className={cn(s.rightControl, s.control)}
+            onClick={slider?.next}
+            aria-label="Next Product Image"
+          />
+        </>
+      ) : null}
       <div
         ref={ref}
         className="keen-slider h-full transition-opacity duration-150"
