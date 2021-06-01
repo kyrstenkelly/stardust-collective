@@ -16,8 +16,8 @@ const Navbar: FC = () => (
             </a>
           </Link>
           <nav className="hidden ml-6 space-x-4 lg:block">
-            <Link href="/search">
-              <a className={s.link}>All</a>
+            <Link href="/shop">
+              <a className={s.link}>Shop</a>
             </Link>
             <Link href="/search/prints">
               <a className={s.link}>Prints</a>

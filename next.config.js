@@ -22,10 +22,10 @@ module.exports = withCommerceConfig({
         source: '/logout',
         destination: '/api/bigcommerce/customers/logout?redirect_to=/',
       },
-      // Rewrites for /search
+      // Rewrites for /shop
       {
-        source: '/search/:category',
-        destination: '/search',
+        source: '/shop/:category',
+        destination: '/shop',
       },
     ].filter((x) => x)
   },

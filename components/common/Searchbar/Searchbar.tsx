@@ -12,7 +12,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
   const router = useRouter()
 
   useEffect(() => {
-    router.prefetch('/search')
+    router.prefetch('/shop')
   }, [])
 
   return useMemo(
@@ -39,7 +39,7 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
 
               router.push(
                 {
-                  pathname: `/search`,
+                  pathname: `/shop`,
                   query: q ? { q } : {},
                 },
                 undefined,

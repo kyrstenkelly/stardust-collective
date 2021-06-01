@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import getSlug from './get-slug'
 
 export function useSearchMeta(asPath: string) {
-  const [pathname, setPathname] = useState<string>('/search')
+  const [pathname, setPathname] = useState<string>('/shop')
   const [category, setCategory] = useState<string | undefined>()
 
   useEffect(() => {
@@ -32,5 +32,5 @@ export const filterQuery = (query: any) =>
 export const getCategoryPath = (path: string) => {
   const category = getSlug(path)
 
-  return `/search${category ? `/${category}` : ''}`
+  return `/shop${category ? `/${category}` : ''}`
 }
