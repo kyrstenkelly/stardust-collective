@@ -23,6 +23,12 @@
   }
 }
 
+.wishList {
+  &:hover {
+    fill: var(--coral);
+  }
+}
+
 .bagCount {
   @apply border border-accents-1 bg-secondary text-secondary absolute rounded-full right-3 top-3 flex items-center justify-center font-bold text-xs;
   padding-left: 2.5px;

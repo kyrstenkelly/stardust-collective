@@ -1,5 +1,7 @@
 .imageContainer {
-  @apply mb-4 p-4 border border-gray-300;
+  @apply mb-4 p-4;
+  border: 1px solid #E3E3E3;
+  border-radius: 8px;
 }
 
 .infoContainer {

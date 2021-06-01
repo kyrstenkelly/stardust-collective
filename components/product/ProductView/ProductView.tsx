@@ -5,7 +5,7 @@ import { FC, useState } from 'react'
 import s from './ProductView.module.css'
 
 import { Swatch, ProductSlider } from '@components/product'
-import { Button, Container, Text, useUI } from '@components/ui'
+import { Button, Container, Select, Text, useUI, Option } from '@components/ui'
 
 import type { Product } from '@commerce/types'
 import usePrice from '@framework/product/use-price'
@@ -94,38 +94,45 @@ const ProductView: FC<Props> = ({ product }) => {
           <section>
             <div className={s.nameBox}>
               <h1 className={s.name}>{product.name}</h1>
-              <div className={s.price}>{price}</div>
+              {process.env.COMMERCE_WISHLIST_ENABLED && (
+                <WishlistButton
+                  className={s.wishlistButton}
+                  productId={product.id}
+                  variant={product.variants[0]! as any}
+                />
+              )}
             </div>
-            {product.options?.map((opt) => (
-              <div className="pb-4" key={opt.displayName}>
-                <h2 className="uppercase font-medium">{opt.displayName}</h2>
-                <div className="flex flex-row py-4">
-                  {opt.values.map((v, i: number) => {
-                    const active = (choices as any)[
-                      opt.displayName.toLowerCase()
-                    ]
-
-                    return (
-                      <Swatch
-                        key={`${opt.id}-${i}`}
-                        active={v.label.toLowerCase() === active}
-                        variant={opt.displayName}
-                        color={v.hexColors ? v.hexColors[0] : ''}
-                        label={v.label}
-                        onClick={() => {
-                          setChoices((choices) => {
-                            return {
-                              ...choices,
-                              [opt.displayName.toLowerCase()]: v.label.toLowerCase(),
-                            }
-                          })
-                        }}
-                      />
-                    )
-                  })}
-                </div>
-              </div>
-            ))}
+            <div className={s.price}>{price}</div>
+            {product.options?.map((opt) => {
+              const activeChoice = (choices as any)[
+                opt.displayName.toLowerCase()
+              ]
+              const selectOptions = opt.values.map(
+                (v) =>
+                  ({
+                    label: v.label,
+                    value: v.label.toLowerCase(),
+                  } as Option)
+              )
+              return (
+                <Select
+                  defaultOption={selectOptions.find(
+                    (o) => o.label === activeChoice
+                  )}
+                  key={opt.displayName}
+                  label={opt.displayName}
+                  options={selectOptions}
+                  onChange={(value: Option) => {
+                    setChoices((choices) => {
+                      return {
+                        ...choices,
+                        [opt.displayName.toLowerCase()]: value.label,
+                      }
+                    })
+                  }}
+                />
+              )
+            })}
 
             <div className="pb-14 break-words w-full max-w-xl">
               <Text html={product.description} />
@@ -144,13 +151,6 @@ const ProductView: FC<Props> = ({ product }) => {
             </Button>
           </div>
         </div>
-        {process.env.COMMERCE_WISHLIST_ENABLED && (
-          <WishlistButton
-            className={s.wishlistButton}
-            productId={product.id}
-            variant={product.variants[0]! as any}
-          />
-        )}
       </div>
     </Container>
   )

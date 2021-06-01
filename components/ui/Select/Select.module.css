@@ -1,0 +1,24 @@
+/** __control and --is-focused are appended by react-select */
+.sc-select {
+  .sc-select__control {
+    border: 0.5px solid green;
+    border-radius: $vds-border-radius-base;
+    z-index: 1;
+
+    &:hover,
+    &.sc-select__control--is-focused {
+      border: 0.5px solid green;
+      box-shadow: none;
+    }
+
+    .sc-select__dropdown-indicator {
+      transition: 300ms ease all;
+    }
+
+    &.sc-select__control--menu-is-open {
+      .sc-select__dropdown-indicator {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

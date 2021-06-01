@@ -73,7 +73,7 @@ const WishlistButton: FC<Props> = ({
     >
       <Heart
         className={s.heartIcon}
-        fill={itemInWishlist ? 'var(--coral-dark)' : 'none'}
+        fill={itemInWishlist ? 'var(--coral)' : 'var(--accents-5)'}
       />
     </button>
   )

@@ -18,7 +18,14 @@ interface Props {
 const LEGAL_PAGES = ['terms-of-use', 'shipping-returns', 'privacy-policy']
 
 const Footer: FC<Props> = ({ className, pages }) => {
-  const { sitePages, legalPages } = usePages(pages)
+  const allPages = [
+    { url: '/', name: 'Home' },
+    { url: '/about', name: 'About' },
+    ...usePages(pages),
+  ]
+  const halfway = Math.ceil(allPages.length / 2)
+  const firstColumnPages = allPages.slice(0, halfway)
+  const secondColumnPages = allPages.slice(halfway, allPages.length)
   const rootClassName = cn(className)
 
   return (
@@ -27,14 +34,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-8 border-b border-accents-2 py-12 text-primary bg-primary transition-colors duration-150">
           <div className="col-span-1 lg:col-span-3">
             <ul className="flex flex-initial flex-col md:flex-1">
-              <li className="py-3 md:py-0 md:pb-4">
-                <Link href="/">
-                  <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
-                    Home
-                  </a>
-                </Link>
-              </li>
-              {sitePages.map((page) => (
+              {firstColumnPages.map((page) => (
                 <li key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
                     <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
@@ -47,7 +47,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
           </div>
           <div className="col-span-1 lg:col-span-3">
             <ul className="flex flex-initial flex-col md:flex-1">
-              {legalPages.map((page) => (
+              {secondColumnPages.map((page) => (
                 <li key={page.url} className="py-3 md:py-0 md:pb-4">
                   <Link href={page.url!}>
                     <a className="text-primary hover:text-accents-6 transition ease-in-out duration-150">
@@ -71,8 +71,7 @@ const Footer: FC<Props> = ({ className, pages }) => {
 
 function usePages(pages?: Page[]) {
   const { locale } = useRouter()
-  const sitePages: Page[] = []
-  const legalPages: Page[] = []
+  const validPages: Page[] = []
 
   if (pages) {
     pages.forEach((page) => {
@@ -81,18 +80,11 @@ function usePages(pages?: Page[]) {
       if (!slug) return
       if (locale && !slug.startsWith(`${locale}/`)) return
 
-      if (isLegalPage(slug, locale)) {
-        legalPages.push(page)
-      } else {
-        sitePages.push(page)
-      }
+      validPages.push(page)
     })
   }
 
-  return {
-    sitePages: sitePages.sort(bySortOrder),
-    legalPages: legalPages.sort(bySortOrder),
-  }
+  return validPages
 }
 
 const isLegalPage = (slug: string, locale?: string) =>

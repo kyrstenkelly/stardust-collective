@@ -20,7 +20,7 @@ const ProductCard: FC<Props> = ({ className, product, imgProps, ...props }) => {
       <a className={cn(s.root, className)}>
         <>
           <div className={s.imageContainer}>
-            {product?.images && (
+            {product?.images?.length && (
               <Image
                 alt={product.name || 'Product Image'}
                 className={s.productImage}

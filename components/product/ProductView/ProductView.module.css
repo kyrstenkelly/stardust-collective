@@ -23,31 +23,15 @@
   }
 }
 
-.nameBox {
-  & .name {
-    @apply bg-primary text-primary font-bold;
-    font-size: 2rem;
-    letter-spacing: 0.4px;
-  }
-
-  & .price {
-    @apply py-2 pb-4 bg-primary text-primary font-bold inline-block tracking-wide;
-  }
-}
-
-.sidebar {
-  @apply flex flex-col col-span-1 mx-auto max-w-8xl lg:px-6 w-full h-full;
-
-  @screen lg {
-    @apply col-span-6 py-8 justify-between;
-  }
-}
-
 .sliderContainer {
   @apply absolute z-10 inset-0 flex items-center justify-center overflow-x-hidden;
 }
 
 .imageContainer {
+  @apply p-8;
+  border: 2px solid #E3E3E3;
+  border-radius: 8px;
+
   & > div {
     @apply h-full;
     & > div {
@@ -60,6 +44,29 @@
   @apply w-full object-contain;
 }
 
+.sidebar {
+  @apply flex flex-col col-span-1 mx-auto max-w-8xl lg:px-6 w-full h-full;
+
+  @screen lg {
+    @apply col-span-6;
+  }
+}
+
+.nameBox {
+  @apply flex justify-between items-center;
+
+  & .name {
+    @apply bg-primary text-primary font-bold;
+    font-size: 2rem;
+    letter-spacing: 0.4px;
+  }
+}
+
+.price {
+  @apply py-2 pb-4 bg-primary text-primary font-bold inline-block tracking-wide;
+}
+
+
 .button {
   text-align: center;
   width: 100%;
@@ -67,13 +74,5 @@
 
   @screen sm {
     min-width: 300px;
-  }
-}
-
-.wishlistButton {
-  @apply absolute z-30 top-6 right-0 bg-primary text-primary w-10 h-10 flex items-center justify-center font-semibold leading-6 cursor-pointer;
-
-  @screen lg {
-    @apply right-12;
   }
 }

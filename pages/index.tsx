@@ -1,5 +1,5 @@
 import { Layout } from '@components/common'
-import { Grid, Marquee, Hero } from '@components/ui'
+import { Grid, Hero } from '@components/ui'
 import { ProductCard } from '@components/product'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
@@ -38,7 +38,7 @@ export default function Home({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Hero headline="stardust collective" />
+      {/* <Hero headline="stardust collective" /> */}
       <Grid layout="home" className="mt-6">
         {products.map((product, i) => (
           <ProductCard
