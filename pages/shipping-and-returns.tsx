@@ -18,8 +18,8 @@ export async function getStaticProps({
 export default function ShippingReturns() {
   return (
     <Container>
-      <div className="flex m-8 lg:m-16">
-        <div className="mx-8 lg:mx-16">
+      <div className="flex m-4 md:m-8 lg:m-16">
+        <div className="w-full">
           <Text variant="heading" className="font-cursive text-6xl mb-8">
             Shipping &amp; Returns
           </Text>
