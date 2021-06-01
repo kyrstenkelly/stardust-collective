@@ -4,9 +4,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import type { Page } from '@framework/common/get-all-pages'
 import getSlug from '@lib/get-slug'
-import { Github } from '@components/icons'
-import { Logo, Container } from '@components/ui'
-import { I18nWidget } from '@components/common'
+import { Container } from '@components/ui'
 import s from './Footer.module.css'
 
 interface Props {
@@ -17,11 +15,12 @@ interface Props {
 
 const LEGAL_PAGES = ['terms-of-use', 'shipping-returns', 'privacy-policy']
 
-const Footer: FC<Props> = ({ className, pages }) => {
+const Footer: FC<Props> = ({ className }) => {
   const allPages = [
     { url: '/', name: 'Home' },
     { url: '/about', name: 'About' },
-    ...usePages(pages),
+    { url: '/shipping-and-returns', name: 'Shipping & Returns' },
+    { url: '/contact', name: 'Contact' },
   ]
   const halfway = Math.ceil(allPages.length / 2)
   const firstColumnPages = allPages.slice(0, halfway)

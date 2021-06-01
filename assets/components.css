@@ -1,3 +1,4 @@
 .fit {
-  min-height: calc(100vh - 88px);
+  /* Subtract header & footer height */
+  min-height: calc(100vh - 91px - 297px);
 }
