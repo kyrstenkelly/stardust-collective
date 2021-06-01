@@ -1,0 +1,11 @@
+.section__toggle {
+  cursor: pointer;
+}
+
+.section__toggle svg {
+  transform: rotate(180deg);
+}
+
+.section__toggle.section__open svg {
+  transform: none;
+}
