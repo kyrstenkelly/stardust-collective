@@ -37,8 +37,8 @@ export async function getStaticProps({
 export default function Contact() {
   return (
     <Container>
-      <div className="flex m-8 lg:m-16">
-        <div className="mx-8 lg:mx-16">
+      <div className="flex m-4 md:m-8 lg:m-16">
+        <div className="w-full">
           <section className="mb-12">
             <Text variant="heading" className="font-cursive text-6xl">
               Contact
