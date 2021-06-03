@@ -32,7 +32,7 @@ export default function Commissions() {
             src="https://airtable.com/embed/shreedeZhCWDKjsgI?backgroundColor=teal"
             frameBorder="0"
             width="100%"
-            height="2990"
+            height="1640"
             style={{ background: 'transparent', border: '1px solid #ccc' }}
           />
         </div>
