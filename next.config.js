@@ -9,6 +9,11 @@ module.exports = withCommerceConfig({
     locales: ['en-US', 'es'],
     defaultLocale: 'en-US',
   },
+  exportPathMap: async function () {
+    return {
+      '/checkout': { page: '/api/checkout' },
+    }
+  },
   rewrites() {
     return [
       {
