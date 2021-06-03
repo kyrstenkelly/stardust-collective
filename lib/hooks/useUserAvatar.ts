@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useUI } from '@components/ui/context'
-import { getRandomColor } from '@lib/colors'
+import { getRandomPairOfColors } from '@lib/colors'
 
 export const useUserAvatar = (name = 'userAvatar') => {
   const { userAvatar, setUserAvatar } = useUI()
@@ -12,7 +12,8 @@ export const useUserAvatar = (name = 'userAvatar') => {
     }
     if (!localStorage.getItem(name)) {
       // bg not set locally, generating one, setting localStorage and context to persist.
-      const value = getRandomColor()
+      const bg = getRandomPairOfColors()
+      const value = `linear-gradient(140deg, ${bg[0]}, ${bg[1]} 100%)`
       localStorage.setItem(name, value)
       setUserAvatar(value)
     }

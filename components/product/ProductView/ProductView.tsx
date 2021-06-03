@@ -1,13 +1,13 @@
 import cn from 'classnames'
 import Image from 'next/image'
 import { NextSeo } from 'next-seo'
-import { FC, useState } from 'react'
+import { FC, useState, useEffect } from 'react'
 import s from './ProductView.module.css'
 
-import { Swatch, ProductSlider } from '@components/product'
+import { ProductSlider } from '@components/product'
 import { Button, Container, Select, Text, useUI, Option } from '@components/ui'
 
-import type { Product } from '@commerce/types'
+import type { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
 import { useAddItem } from '@framework/cart'
 
@@ -31,11 +31,21 @@ const ProductView: FC<Props> = ({ product }) => {
   // Select the correct variant based on choices
   const variant = getVariant(product, choices)
   const { price } = usePrice({
-    amount: variant?.prices.price.value || product.price.value,
+    amount: variant?.prices?.price.value || product.price.value,
     baseAmount: product.price.retailPrice,
     currencyCode:
-      variant?.prices.price.currencyCode || product.price.currencyCode!,
+      variant?.prices?.price.currencyCode || product.price.currencyCode!,
   })
+
+  useEffect(() => {
+    // Selects the default option
+    product.variants[0].options?.forEach((v) => {
+      setChoices((choices) => ({
+        ...choices,
+        [v.displayName.toLowerCase()]: v.values[0].label.toLowerCase(),
+      }))
+    })
+  }, [])
 
   const addToCart = async () => {
     setLoading(true)

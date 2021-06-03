@@ -1,6 +1,6 @@
 import { FetcherError } from '@commerce/utils/errors'
 import type { GraphQLFetcher } from '@commerce/api'
-import { getConfig } from '..'
+import { provider } from '..'
 import fetch from './fetch'
 
 const fetchGraphqlApi: GraphQLFetcher = async (
@@ -8,7 +8,8 @@ const fetchGraphqlApi: GraphQLFetcher = async (
   { variables, preview } = {},
   fetchOptions
 ) => {
-  const config = getConfig()
+  // log.warn(query)
+  const { config } = provider
   const res = await fetch(config.commerceUrl + (preview ? '/preview' : ''), {
     ...fetchOptions,
     method: 'POST',

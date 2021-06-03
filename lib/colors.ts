@@ -1,9 +1,18 @@
 import random from 'lodash.random'
 
-export function getRandomColor() {
-  const colors = [colorMap.scTurquoise, colorMap.scCoral, colorMap.scGold]
+export function getRandomPairOfColors() {
+  const colors = ['#37B679', '#DA3C3C', '#3291FF', '#7928CA', '#79FFE1']
   const getRandomIdx = () => random(0, colors.length - 1)
-  return colors[getRandomIdx()]
+  let idx = getRandomIdx()
+  let idx2 = getRandomIdx()
+
+  // Has to be a different color
+  while (idx2 === idx) {
+    idx2 = getRandomIdx()
+  }
+
+  // Returns a pair of colors
+  return [colors[idx], colors[idx2]]
 }
 
 function hexToRgb(hex: string = '') {
@@ -33,7 +42,7 @@ function hexToRgb(hex: string = '') {
   return [r, g, b]
 }
 
-const colorMap: Record<string, string> = {
+export const colorMap: Record<string, string> = {
   aliceblue: '#F0F8FF',
   antiquewhite: '#FAEBD7',
   aqua: '#00FFFF',
@@ -47,6 +56,8 @@ const colorMap: Record<string, string> = {
   blueviolet: '#8A2BE2',
   brown: '#A52A2A',
   burlywood: '#DEB887',
+  burgandy: '#800020',
+  burgundy: '#800020',
   cadetblue: '#5F9EA0',
   chartreuse: '#7FFF00',
   chocolate: '#D2691E',
@@ -168,6 +179,8 @@ const colorMap: Record<string, string> = {
   slateblue: '#6A5ACD',
   slategray: '#708090',
   slategrey: '#708090',
+  spacegrey: '#65737e',
+  spacegray: '#65737e',
   snow: '#FFFAFA',
   springgreen: '#00FF7F',
   steelblue: '#4682B4',
@@ -176,17 +189,12 @@ const colorMap: Record<string, string> = {
   thistle: '#D8BFD8',
   tomato: '#FF6347',
   turquoise: '#40E0D0',
+  violet: '#EE82EE',
   wheat: '#F5DEB3',
   white: '#FFFFFF',
   whitesmoke: '#F5F5F5',
   yellow: '#FFFF00',
   yellowgreen: '#9ACD32',
-  scTurquoise: '#6db0a6',
-  scTurquoseDark: '#436e68',
-  scCoral: '#ec9e85',
-  scCoralDark: '#ad553a',
-  scGold: '#fae68f',
-  scGoldDark: '#ddbd3d',
 }
 
 export function isDark(color: string = ''): boolean {

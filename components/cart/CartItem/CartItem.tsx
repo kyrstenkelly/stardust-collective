@@ -5,7 +5,7 @@ import Link from 'next/link'
 import s from './CartItem.module.css'
 import { Trash, Plus, Minus } from '@components/icons'
 import { useUI } from '@components/ui/context'
-import type { LineItem } from '@framework/types'
+import type { LineItem } from '@commerce/types/cart'
 import usePrice from '@framework/product/use-price'
 import useUpdateItem from '@framework/cart/use-update-item'
 import useRemoveItem from '@framework/cart/use-remove-item'
@@ -95,8 +95,8 @@ const CartItem = ({
       <div className="w-16 h-16 relative overflow-hidden">
         <Image
           className={s.productImage}
-          width={150}
-          height={150}
+          layout="fill"
+          objectFit="contain"
           src={item.variant.image!.url}
           alt={item.variant.image!.altText}
           unoptimized

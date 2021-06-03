@@ -1,19 +1,19 @@
 import type { GetStaticPropsContext } from 'next'
-import { getConfig } from '@framework/api'
-import getAllPages from '@framework/common/get-all-pages'
 import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 import { Layout } from '@components/common'
 import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
+import commerce from '@lib/api/commerce'
 
 export async function getStaticProps({
   preview,
   locale,
+  locales,
 }: GetStaticPropsContext) {
-  const config = getConfig({ locale })
-  const { pages } = await getAllPages({ config, preview })
+  const config = { locale, locales }
+  const { pages } = await commerce.getAllPages({ config, preview })
   return {
     props: { pages },
   }
@@ -81,20 +81,6 @@ export default function Cart() {
                 />
               ))}
             </ul>
-            <div className="my-6">
-              <Text>
-                Before you leave, take a look at these items. We picked them
-                just for you
-              </Text>
-              <div className="flex py-6 space-x-6">
-                {[1, 2, 3, 4, 5, 6].map((x) => (
-                  <div
-                    key={x}
-                    className="border border-accents-3 w-full h-24 bg-accents-2 bg-opacity-50 transform cursor-pointer hover:scale-110 duration-75"
-                  />
-                ))}
-              </div>
-            </div>
           </div>
         )}
       </div>

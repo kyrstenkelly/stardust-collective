@@ -22,7 +22,7 @@ const Select: FC<Props> = ({ defaultOption, label, onChange, options }) => {
         className="sc-select"
         classNamePrefix="sc-select"
         defaultValue={defaultOption || options[0]}
-        isClearable
+        isClearable={false}
         name={label}
         onChange={onChange}
         options={options}

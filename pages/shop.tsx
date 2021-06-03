@@ -4,14 +4,13 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
+import type { Product } from '@commerce/types/product'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
 import { Container, Grid, Skeleton } from '@components/ui'
 
-import { getConfig } from '@framework/api'
 import useSearch from '@framework/product/use-search'
-import getAllPages from '@framework/common/get-all-pages'
-import getSiteInfo from '@framework/common/get-site-info'
+import commerce from '@lib/api/commerce'
 
 import rangeMap from '@lib/range-map'
 
@@ -27,20 +26,17 @@ const SORT = Object.entries({
 })
 
 import { filterQuery, getCategoryPath, useSearchMeta } from '@lib/search'
-import { Product } from '@commerce/types'
 
 export async function getStaticProps({
   preview,
   locale,
+  locales,
 }: GetStaticPropsContext) {
-  const config = getConfig({ locale })
-  const { pages } = await getAllPages({ config, preview })
-  const { categories } = await getSiteInfo({ config, preview })
+  const config = { locale, locales }
+  const { pages } = await commerce.getAllPages({ config, preview })
+  const { categories } = await commerce.getSiteInfo({ config, preview })
   return {
-    props: {
-      pages,
-      categories,
-    },
+    props: { pages, categories },
   }
 }
 
@@ -65,8 +61,6 @@ export default function Shop({
 
   const { data } = useSearch({
     search: typeof q === 'string' ? q : '',
-    // TODO: Shopify - Fix this type
-    categoryId: activeCategory?.entityId as any,
     sort: typeof sort === 'string' ? sort : '',
   })
 
@@ -152,8 +146,7 @@ export default function Shop({
                         className={cn(
                           'block text-sm leading-5 text-gray-700 hover:bg-gray-100 lg:hover:bg-transparent hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900',
                           {
-                            underline:
-                              activeCategory?.entityId === cat.entityId,
+                            underline: activeCategory === cat,
                           }
                         )}
                       >
