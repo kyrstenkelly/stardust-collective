@@ -1,27 +1,22 @@
 import { Layout } from '@components/common'
-import { Grid, Hero } from '@components/ui'
+import { Grid } from '@components/ui'
 import { ProductCard } from '@components/product'
+import commerce from '@lib/api/commerce'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-
-import { getConfig } from '@framework/api'
-import getAllProducts from '@framework/product/get-all-products'
-import getSiteInfo from '@framework/common/get-site-info'
-import getAllPages from '@framework/common/get-all-pages'
 
 export async function getStaticProps({
   preview,
   locale,
+  locales,
 }: GetStaticPropsContext) {
-  const config = getConfig({ locale })
-
-  const { products } = await getAllProducts({
+  const config = { locale, locales }
+  const { products } = await commerce.getAllProducts({
     variables: { first: 12 },
     config,
     preview,
   })
-
-  const { categories } = await getSiteInfo({ config, preview })
-  const { pages } = await getAllPages({ config, preview })
+  const { categories } = await commerce.getSiteInfo({ config, preview })
+  const { pages } = await commerce.getAllPages({ config, preview })
 
   return {
     props: {

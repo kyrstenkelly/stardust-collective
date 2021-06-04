@@ -1,4 +1,4 @@
-import type { Product, ProductOption } from '@commerce/types'
+import type { Product, ProductOption } from '@commerce/types/product'
 
 export type SelectedOptions = {
   size: string | null

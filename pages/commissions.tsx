@@ -1,22 +1,20 @@
 import type { GetStaticPropsContext } from 'next'
 import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
-import { getConfig } from '@framework/api'
-import getAllPages from '@framework/common/get-all-pages'
-import { ChevronUp } from '@components/icons'
-import styles from './commissions.module.css'
+import commerce from '@lib/api/commerce'
 
 export async function getStaticProps({
   preview,
   locale,
+  locales,
 }: GetStaticPropsContext) {
-  const config = getConfig({ locale })
-  const { pages } = await getAllPages({ config, preview })
+  const config = { locale, locales }
+  const { pages } = await commerce.getAllPages({ config, preview })
+  const { categories } = await commerce.getSiteInfo({ config, preview })
   return {
-    props: { pages },
+    props: { pages, categories },
   }
 }
-
 export default function Commissions() {
   return (
     <Container>
@@ -34,7 +32,7 @@ export default function Commissions() {
             src="https://airtable.com/embed/shreedeZhCWDKjsgI?backgroundColor=teal"
             frameBorder="0"
             width="100%"
-            height="2990"
+            height="1640"
             style={{ background: 'transparent', border: '1px solid #ccc' }}
           />
         </div>

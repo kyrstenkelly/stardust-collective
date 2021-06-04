@@ -2,21 +2,18 @@ import { Layout } from '@components/common'
 import Image from 'next/image'
 import { Container, Text } from '@components/ui'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import { getConfig } from '@framework/api'
-import getAllPages from '@framework/common/get-all-pages'
+import commerce from '@lib/api/commerce'
 
 export async function getStaticProps({
   preview,
   locale,
+  locales,
 }: GetStaticPropsContext) {
-  const config = getConfig({ locale })
-  const { pages } = await getAllPages({ config, preview })
-
+  const config = { locale, locales }
+  const { pages } = await commerce.getAllPages({ config, preview })
+  const { categories } = await commerce.getSiteInfo({ config, preview })
   return {
-    props: {
-      pages,
-    },
-    revalidate: 14400,
+    props: { pages, categories },
   }
 }
 
