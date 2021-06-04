@@ -22,7 +22,7 @@ interface Props {
 
 const ProductView: FC<Props> = ({ product }) => {
   const addItem = useAddItem()
-  const { openSidebar } = useUI()
+  const { openCartSidebar } = useUI()
   const [loading, setLoading] = useState(false)
   const [choices, setChoices] = useState<SelectedOptions>({
     size: getDefaultOption(product.options, 'size'),
@@ -54,7 +54,7 @@ const ProductView: FC<Props> = ({ product }) => {
         productId: String(product.id),
         variantId: String(variant ? variant.id : product.variants[0].id),
       })
-      openSidebar()
+      openCartSidebar()
       setLoading(false)
     } catch (err) {
       setLoading(false)

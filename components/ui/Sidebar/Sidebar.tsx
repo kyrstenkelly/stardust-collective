@@ -10,10 +10,16 @@ import {
 interface Props {
   children: any
   open: boolean
+  side?: 'right' | 'left'
   onClose: () => void
 }
 
-const Sidebar: FC<Props> = ({ children, open = false, onClose }) => {
+const Sidebar: FC<Props> = ({
+  children,
+  open = false,
+  onClose,
+  side = 'right',
+}) => {
   const ref = useRef() as React.MutableRefObject<HTMLDivElement>
 
   useEffect(() => {
@@ -29,6 +35,9 @@ const Sidebar: FC<Props> = ({ children, open = false, onClose }) => {
     }
   }, [open])
 
+  const sidebarClasses =
+    side === 'right' ? 'right-0 pl-10 sm:pl-16' : 'left-0 pr-10 sm:pr-16'
+
   return (
     <Portal>
       {open ? (
@@ -38,7 +47,9 @@ const Sidebar: FC<Props> = ({ children, open = false, onClose }) => {
               className="absolute inset-0 bg-black bg-opacity-50 transition-opacity"
               onClick={onClose}
             />
-            <section className="absolute inset-y-0 right-0 pl-10 max-w-full flex sm:pl-16 outline-none">
+            <section
+              className={`absolute inset-y-0 max-w-full flex outline-none ${sidebarClasses}`}
+            >
               <div className="h-full md:w-screen md:max-w-md">
                 <div className="h-full flex flex-col text-base bg-accents-1 shadow-xl overflow-y-auto">
                   {children}

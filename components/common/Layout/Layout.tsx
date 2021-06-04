@@ -50,9 +50,9 @@ const Layout: FC<Props> = ({
   pageProps: { commerceFeatures, ...pageProps },
 }) => {
   const {
-    displaySidebar,
+    displayCartSidebar,
     displayModal,
-    closeSidebar,
+    closeCartSidebar,
     closeModal,
     modalView,
   } = useUI()
@@ -71,7 +71,7 @@ const Layout: FC<Props> = ({
           {modalView === 'FORGOT_VIEW' && <ForgotPassword />}
         </Modal>
 
-        <Sidebar open={displaySidebar} onClose={closeSidebar}>
+        <Sidebar open={displayCartSidebar} onClose={closeCartSidebar}>
           <CartSidebarView />
         </Sidebar>
 

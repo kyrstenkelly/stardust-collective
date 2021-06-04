@@ -2,7 +2,8 @@ import React, { FC, useMemo } from 'react'
 import { ThemeProvider } from 'next-themes'
 
 export interface State {
-  displaySidebar: boolean
+  displayNavSidebar: boolean
+  displayCartSidebar: boolean
   displayDropdown: boolean
   displayModal: boolean
   displayToast: boolean
@@ -12,7 +13,8 @@ export interface State {
 }
 
 const initialState = {
-  displaySidebar: false,
+  displayNavSidebar: false,
+  displayCartSidebar: false,
   displayDropdown: false,
   displayModal: false,
   modalView: 'LOGIN_VIEW',
@@ -23,10 +25,16 @@ const initialState = {
 
 type Action =
   | {
-      type: 'OPEN_SIDEBAR'
+      type: 'OPEN_CART_SIDEBAR'
     }
   | {
-      type: 'CLOSE_SIDEBAR'
+      type: 'OPEN_NAV_SIDEBAR'
+    }
+  | {
+      type: 'CLOSE_CART_SIDEBAR'
+    }
+  | {
+      type: 'CLOSE_NAV_SIDEBAR'
     }
   | {
       type: 'OPEN_TOAST'
@@ -73,16 +81,28 @@ UIContext.displayName = 'UIContext'
 
 function uiReducer(state: State, action: Action) {
   switch (action.type) {
-    case 'OPEN_SIDEBAR': {
+    case 'OPEN_CART_SIDEBAR': {
       return {
         ...state,
-        displaySidebar: true,
+        displayCartSidebar: true,
       }
     }
-    case 'CLOSE_SIDEBAR': {
+    case 'CLOSE_CART_SIDEBAR': {
       return {
         ...state,
-        displaySidebar: false,
+        displayCartSidebar: false,
+      }
+    }
+    case 'OPEN_NAV_SIDEBAR': {
+      return {
+        ...state,
+        displayNavSidebar: true,
+      }
+    }
+    case 'CLOSE_NAV_SIDEBAR': {
+      return {
+        ...state,
+        displayNavSidebar: false,
       }
     }
     case 'OPEN_DROPDOWN': {
@@ -101,7 +121,8 @@ function uiReducer(state: State, action: Action) {
       return {
         ...state,
         displayModal: true,
-        displaySidebar: false,
+        displayCartSidebar: false,
+        displayNavSidebar: false,
       }
     }
     case 'CLOSE_MODAL': {
@@ -146,14 +167,23 @@ function uiReducer(state: State, action: Action) {
 export const UIProvider: FC = (props) => {
   const [state, dispatch] = React.useReducer(uiReducer, initialState)
 
-  const openSidebar = () => dispatch({ type: 'OPEN_SIDEBAR' })
-  const closeSidebar = () => dispatch({ type: 'CLOSE_SIDEBAR' })
-  const toggleSidebar = () =>
-    state.displaySidebar
-      ? dispatch({ type: 'CLOSE_SIDEBAR' })
-      : dispatch({ type: 'OPEN_SIDEBAR' })
-  const closeSidebarIfPresent = () =>
-    state.displaySidebar && dispatch({ type: 'CLOSE_SIDEBAR' })
+  const openCartSidebar = () => dispatch({ type: 'OPEN_CART_SIDEBAR' })
+  const closeCartSidebar = () => dispatch({ type: 'CLOSE_CART_SIDEBAR' })
+  const toggleCartSidebar = () =>
+    state.displayCartSidebar
+      ? dispatch({ type: 'CLOSE_CART_SIDEBAR' })
+      : dispatch({ type: 'OPEN_CART_SIDEBAR' })
+  const closeCartSidebarIfPresent = () =>
+    state.displayCartSidebar && dispatch({ type: 'CLOSE_CART_SIDEBAR' })
+
+  const openNavSidebar = () => dispatch({ type: 'OPEN_NAV_SIDEBAR' })
+  const closeNavSidebar = () => dispatch({ type: 'CLOSE_NAV_SIDEBAR' })
+  const toggleNavSidebar = () =>
+    state.displayNavSidebar
+      ? dispatch({ type: 'CLOSE_NAV_SIDEBAR' })
+      : dispatch({ type: 'OPEN_NAV_SIDEBAR' })
+  const closeNavSidebarIfPresent = () =>
+    state.displayNavSidebar && dispatch({ type: 'CLOSE_NAV_SIDEBAR' })
 
   const openDropdown = () => dispatch({ type: 'OPEN_DROPDOWN' })
   const closeDropdown = () => dispatch({ type: 'CLOSE_DROPDOWN' })
@@ -173,10 +203,14 @@ export const UIProvider: FC = (props) => {
   const value = useMemo(
     () => ({
       ...state,
-      openSidebar,
-      closeSidebar,
-      toggleSidebar,
-      closeSidebarIfPresent,
+      openCartSidebar,
+      closeCartSidebar,
+      toggleCartSidebar,
+      closeCartSidebarIfPresent,
+      openNavSidebar,
+      closeNavSidebar,
+      toggleNavSidebar,
+      closeNavSidebarIfPresent,
       openDropdown,
       closeDropdown,
       openModal,

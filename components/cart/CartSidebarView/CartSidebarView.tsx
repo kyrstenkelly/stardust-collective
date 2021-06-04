@@ -11,7 +11,7 @@ import useCart from '@framework/cart/use-cart'
 import usePrice from '@framework/product/use-price'
 
 const CartSidebarView: FC = () => {
-  const { closeSidebar } = useUI()
+  const { closeCartSidebar } = useUI()
   const { data, isLoading, isEmpty } = useCart()
 
   const { price: subTotal } = usePrice(
@@ -26,7 +26,7 @@ const CartSidebarView: FC = () => {
       currencyCode: data.currency.code,
     }
   )
-  const handleClose = () => closeSidebar()
+  const handleClose = () => closeCartSidebar()
 
   const error = null
   const success = null
