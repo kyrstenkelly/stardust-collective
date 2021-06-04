@@ -37,16 +37,6 @@ const ProductView: FC<Props> = ({ product }) => {
       variant?.prices?.price.currencyCode || product.price.currencyCode!,
   })
 
-  useEffect(() => {
-    // Selects the default option
-    product.variants[0].options?.forEach((v) => {
-      setChoices((choices) => ({
-        ...choices,
-        [v.displayName.toLowerCase()]: v.values[0].label.toLowerCase(),
-      }))
-    })
-  }, [])
-
   const addToCart = async () => {
     setLoading(true)
     try {
