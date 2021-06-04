@@ -18,7 +18,7 @@ const LEGAL_PAGES = ['terms-of-use', 'shipping-returns', 'privacy-policy']
 const Footer: FC<Props> = ({ className }) => {
   const allPages = [
     { url: '/', name: 'Home' },
-    { url: '/about', name: 'About' },
+    // { url: '/about', name: 'About' }, TODO: Finish about page. turniing off for now though.
     { url: '/shipping-and-returns', name: 'Shipping & Returns' },
     { url: '/contact', name: 'Contact' },
   ]
