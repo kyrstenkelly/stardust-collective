@@ -17,13 +17,10 @@ module.exports = withCommerceConfig({
         source: '/logout',
         destination: '/api/logout?redirect_to=/',
       },
+      // Rewrites for /search
       {
         source: '/search/:category',
-        destination: '/shop',
-      },
-      {
-        source: '/shop/:category',
-        destination: '/shop',
+        destination: '/search',
       },
     ].filter(Boolean)
   },

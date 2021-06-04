@@ -4,9 +4,9 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-import type { Product } from '@commerce/types/product'
 import { Layout } from '@components/common'
 import { ProductCard } from '@components/product'
+import type { Product } from '@commerce/types/product'
 import { Container, Grid, Skeleton } from '@components/ui'
 
 import useSearch from '@framework/product/use-search'
@@ -14,18 +14,17 @@ import commerce from '@lib/api/commerce'
 
 import rangeMap from '@lib/range-map'
 
+import { filterQuery, getCategoryPath, useSearchMeta } from '@lib/search'
+
 // TODO(bc) Remove this. This should come from the API
 import getSlug from '@lib/get-slug'
 
-// TODO (bc) : Remove or standarize this.
 const SORT = Object.entries({
   'latest-desc': 'Latest arrivals',
   'trending-desc': 'Trending',
   'price-asc': 'Price: Low to high',
   'price-desc': 'Price: High to low',
 })
-
-import { filterQuery, getCategoryPath, useSearchMeta } from '@lib/search'
 
 export async function getStaticProps({
   preview,
@@ -40,7 +39,7 @@ export async function getStaticProps({
   }
 }
 
-export default function Shop({
+export default function Search({
   categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [activeFilter, setActiveFilter] = useState('')
@@ -61,6 +60,7 @@ export default function Shop({
 
   const { data } = useSearch({
     search: typeof q === 'string' ? q : '',
+    categoryId: activeCategory?.id,
     sort: typeof sort === 'string' ? sort : '',
   })
 
@@ -344,4 +344,4 @@ export default function Shop({
   )
 }
 
-Shop.Layout = Layout
+Search.Layout = Layout
