@@ -38,7 +38,7 @@ export async function getStaticProps({
 export default function Contact() {
   return (
     <Container>
-      <div className="flex m-4 md:m-8 lg:m-16">
+      <div className="flex m-2 sm:m-4 lg:m-16">
         <div className="w-full">
           <section className="mb-12">
             <Text variant="heading" className="font-cursive text-6xl">
@@ -77,12 +77,13 @@ export default function Contact() {
               soon as I can!
             </Text>
 
+            <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script>
             <iframe
               className="airtable-embed"
               src="https://airtable.com/embed/shrrSGtfdi9uwuJyP?backgroundColor=teal"
               frameBorder="0"
               width="100%"
-              height="782"
+              height="816.005682"
               style={{ background: 'transparent', border: '1px solid #ccc' }}
             />
           </section>

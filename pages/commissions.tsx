@@ -28,11 +28,12 @@ export default function Commissions() {
             Want a custom piece of art? Fill out the form below!
           </Text>
 
+          <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script>
           <iframe
             src="https://airtable.com/embed/shreedeZhCWDKjsgI?backgroundColor=teal"
             frameBorder="0"
             width="100%"
-            height="1640"
+            height="1975.005682"
             style={{ background: 'transparent', border: '1px solid #ccc' }}
           />
         </div>
