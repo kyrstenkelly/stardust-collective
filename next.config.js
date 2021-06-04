@@ -1,14 +1,12 @@
 const commerce = require('./commerce.config.json')
-const {
-  withCommerceConfig,
-} = require('./framework/commerce/config')
+const { withCommerceConfig } = require('./framework/commerce/config')
 
 module.exports = withCommerceConfig({
   commerce,
-  i18n: {
-    locales: ['en-US', 'es'],
-    defaultLocale: 'en-US',
-  },
+  // i18n: {
+  //   locales: ['en-US', 'es'],
+  //   defaultLocale: 'en-US',
+  // },
   rewrites() {
     return [
       {
