@@ -40,7 +40,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const { pathname } = useRouter()
   const { theme, setTheme } = useTheme()
   const [display, setDisplay] = useState(false)
-  const { closeSidebarIfPresent } = useUI()
+  const { closeCartSidebarIfPresent } = useUI()
   const ref = useRef() as React.MutableRefObject<HTMLUListElement>
 
   useEffect(() => {
@@ -78,7 +78,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                       })}
                       onClick={() => {
                         setDisplay(false)
-                        closeSidebarIfPresent()
+                        closeCartSidebarIfPresent()
                       }}
                     >
                       {name}

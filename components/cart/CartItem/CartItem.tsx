@@ -25,7 +25,7 @@ const CartItem = ({
   item: LineItem
   currencyCode: string
 }) => {
-  const { closeSidebarIfPresent } = useUI()
+  const { closeCartSidebarIfPresent } = useUI()
 
   const { price } = usePrice({
     amount: item.variant.price * item.quantity,
@@ -106,7 +106,7 @@ const CartItem = ({
         <Link href={`/product/${item.path}`}>
           <span
             className="font-bold text-lg cursor-pointer leading-6"
-            onClick={() => closeSidebarIfPresent()}
+            onClick={() => closeCartSidebarIfPresent()}
           >
             {item.name}
           </span>

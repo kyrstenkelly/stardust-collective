@@ -27,7 +27,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
   const [loading, setLoading] = useState(false)
   const [removing, setRemoving] = useState(false)
   const addItem = useAddItem()
-  const { openSidebar } = useUI()
+  const { openCartSidebar } = useUI()
 
   const handleRemove = async () => {
     setRemoving(true)
@@ -47,7 +47,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
         productId: String(product.id),
         variantId: String(product.variants[0].id),
       })
-      openSidebar()
+      openCartSidebar()
       setLoading(false)
     } catch (err) {
       setLoading(false)
