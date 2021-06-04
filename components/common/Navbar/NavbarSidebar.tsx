@@ -2,6 +2,7 @@ import { FC } from 'react'
 import Link from 'next/link'
 import { Cross } from '@components/icons'
 import { Logo } from '@components/ui'
+import { SocialNav } from '@components/common'
 import { useUI } from '@components/ui/context'
 import s from './Navbar.module.css'
 
@@ -39,7 +40,8 @@ const NavbarSidebar: FC<Props> = ({ links }) => {
           </div>
         </div>
       </header>
-      <nav className="m-8 flex flex-col text-primary">
+
+      <nav className="m-8 flex flex-col">
         {links.map((link) => (
           <div className="pb-4" key={link.url}>
             <Link href={link.url}>
@@ -50,6 +52,10 @@ const NavbarSidebar: FC<Props> = ({ links }) => {
           </div>
         ))}
       </nav>
+
+      <div className="mx-8 text-accents-6 hover:text-accents-9">
+        <SocialNav variant="inline" />
+      </div>
     </div>
   )
 }
