@@ -40,7 +40,7 @@ export async function getStaticProps({
   }
 }
 
-export default function Shop({
+export default function Search({
   categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [activeFilter, setActiveFilter] = useState('')
@@ -344,4 +344,4 @@ export default function Shop({
   )
 }
 
-Shop.Layout = Layout
+Search.Layout = Layout

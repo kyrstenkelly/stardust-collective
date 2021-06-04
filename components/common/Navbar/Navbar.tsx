@@ -9,7 +9,7 @@ import NavbarSidebar from './NavbarSidebar'
 import s from './Navbar.module.css'
 
 const LINKS = [
-  { url: '/shop', label: 'Shop' },
+  { url: '/search', label: 'Shop' },
   { url: '/commissions', label: 'Commissions' },
   { url: '/contact', label: 'Contact' },
 ]
