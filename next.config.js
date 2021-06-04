@@ -18,10 +18,6 @@ module.exports = withCommerceConfig({
         destination: '/api/logout?redirect_to=/',
       },
       {
-        source: '/search/:category',
-        destination: '/shop',
-      },
-      {
         source: '/shop/:category',
         destination: '/shop',
       },
