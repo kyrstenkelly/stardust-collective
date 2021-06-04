@@ -1,5 +1,6 @@
 import { FC } from 'react'
 import Link from 'next/link'
+import { Menu } from '@components/icons'
 import { Logo, Container, Sidebar } from '@components/ui'
 import { Searchbar, UserNav } from '@components/common'
 import { useUI } from '@components/ui/context'
@@ -22,28 +23,27 @@ const Navbar: FC = () => {
         <div className="relative flex flex-row justify-between py-2 align-center md:py-3">
           <div className="flex items-center flex-1">
             {/* Mobile Logo - Menu */}
-            <div className="visible lg:hidden">
-              <div onClick={toggleNavSidebar}>
+            <div className="visible lg:hidden mr-2">
+              <Menu
+                role="button"
+                className="hover:cursor-pointer"
+                onClick={toggleNavSidebar}
+              />
+
+              <Sidebar
+                open={displayNavSidebar}
+                onClose={closeNavSidebar}
+                side="left"
+              >
+                <NavbarSidebar links={LINKS} />
+              </Sidebar>
+            </div>
+
+            <Link href="/">
+              <a className={s.logo} aria-label="Logo">
                 <Logo />
-              </div>
-            </div>
-
-            <Sidebar
-              open={displayNavSidebar}
-              onClose={closeNavSidebar}
-              side="left"
-            >
-              <NavbarSidebar links={LINKS} />
-            </Sidebar>
-
-            {/* Desktop Logo - Home */}
-            <div className="hidden lg:block">
-              <Link href="/">
-                <a className={s.logo} aria-label="Logo">
-                  <Logo />
-                </a>
-              </Link>
-            </div>
+              </a>
+            </Link>
             <nav className="hidden ml-6 space-x-4 lg:block">
               {LINKS.map((link) => (
                 <Link href={link.url} key={link.url}>
