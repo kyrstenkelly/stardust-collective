@@ -18,7 +18,7 @@ export async function getStaticProps({
 export default function Commissions() {
   return (
     <Container>
-      <div className="flex m-4 md:m-8 lg:m-16">
+      <div className="flex m-8 lg:m-16">
         <div className="w-full">
           <Text variant="heading" className="font-cursive text-6xl">
             Commissions
@@ -27,15 +27,17 @@ export default function Commissions() {
           <Text className="mb-8">
             Want a custom piece of art? Fill out the form below!
           </Text>
-
-          <iframe
-            src="https://airtable.com/embed/shreedeZhCWDKjsgI?backgroundColor=teal"
-            frameBorder="0"
-            width="100%"
-            height="1640"
-            style={{ background: 'transparent', border: '1px solid #ccc' }}
-          />
         </div>
+      </div>
+      <div className="lg:m-8">
+        {/* <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script> */}
+        <iframe
+          src="https://airtable.com/embed/shreedeZhCWDKjsgI?backgroundColor=teal"
+          frameBorder="0"
+          width="100%"
+          height="1995"
+          style={{ background: 'transparent' }}
+        />
       </div>
     </Container>
   )
