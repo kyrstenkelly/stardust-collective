@@ -36,7 +36,7 @@ const Sidebar: FC<Props> = ({
   }, [open])
 
   const sidebarClasses =
-    side === 'right' ? 'right-0 pl-10 sm:pl-16' : 'left-0 pr-10 sm:pr-16'
+    side === 'right' ? 'right-0 sm:pl-16' : 'left-0 sm:pr-16'
 
   return (
     <Portal>
