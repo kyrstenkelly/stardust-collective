@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useMemo } from 'react'
 import cn from 'classnames'
 import Link from 'next/link'
 import type { Product } from '@commerce/types/product'
@@ -15,6 +15,20 @@ interface Props {
 const placeholderImg = '/product-img-placeholder.svg'
 
 const ProductCard: FC<Props> = ({ className, product, imgProps, ...props }) => {
+  const currency = product.price.currencyCode === 'USD' ? '$' : ''
+
+  const priceRange = useMemo(() => {
+    if (product.variants && product.variants.length > 1) {
+      const variantPrices = product.variants
+        .map((v) => v.prices?.price.value)
+        .sort()
+      return [variantPrices[0], variantPrices[variantPrices.length - 1]]
+        .map((p) => `${currency}${p}`)
+        .join(' - ')
+    }
+    return null
+  }, [product])
+
   return (
     <Link href={`/product/${product.slug}`} {...props}>
       <a className={cn(s.root, className)}>
@@ -39,8 +53,7 @@ const ProductCard: FC<Props> = ({ className, product, imgProps, ...props }) => {
                 <span>{product.name}</span>
               </h3>
               <span className={s.productPrice}>
-                {product.price.currencyCode === 'USD' && '$'}
-                {product.price.value}
+                {priceRange ? priceRange : `${currency}${product.price.value}`}
               </span>
             </div>
             {process.env.COMMERCE_WISHLIST_ENABLED && (

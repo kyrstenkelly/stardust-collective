@@ -68,6 +68,9 @@ export const productInfoFragment = /* GraphQL */ `
             altText
             isDefault
           }
+          prices {
+            ...productPrices
+          }
         }
       }
     }
