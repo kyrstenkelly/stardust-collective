@@ -49,8 +49,7 @@ export default function Contact() {
       <div className="lg:m-8">
         {/* <script src="https://static.airtable.com/js/embed/embed_snippet_v1.js"></script> */}
         <iframe
-          className="airtable-embed"
-          src="https://airtable.com/embed/shrrSGtfdi9uwuJyP?backgroundColor=teal"
+          src="https://airtable.com/embed/shrVKA9HVDl0qYcOl?backgroundColor=teal"
           frameBorder="0"
           width="100%"
           height="860"
